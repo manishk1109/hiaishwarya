@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Aishwarya</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Dancing+Script:wght@600&display=swap');
+
+        :root {
+            /* Changed color to a supportive Blue/Teal instead of romantic Pink, 
+               but kept a warm accent */
+            --primary: #0ea5e9; 
+            --accent: #f472b6;
+            --bg-dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- BACKGROUND ANIMATION --- */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards 0.8s;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* --- FLIPKART CARD --- */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 90%;
+            width: 500px;
+            margin-top: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(14, 165, 233, 0.5);
+        }
+
+        /* --- INTERACTIVE PROMISES --- */
+        .promise-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 3rem;
+        }
+
+        .promise-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promise-box:hover {
+            background: rgba(14, 165, 233, 0.1);
+            transform: scale(1.02);
+        }
+
+        .promise-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hidden-text {
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+
+        .promise-box.active .hidden-text {
+            height: auto;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        .promise-box.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .tap-hint {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* --- FINAL BUTTON --- */
+        .btn-love {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+        }
+
+        .btn-love:active {
+            transform: scale(0.95);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* SCROLL PROGRESS */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            width: 0%;
+            z-index: 100;
+        }
+
+        /* MOBILE FIXES */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .glass-card { padding: 1.5rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="starContainer"></div>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <section id="home">
+        <h1 class="floating">Hey, Aishwarya</h1>
+        <p>I know life is moving fast right now.<br>But I wanted to make time stop for just a second.</p>
+        <div style="font-size: 2rem; margin-top: 2rem; animation: fadeUp 1s forwards 1.2s; opacity: 0;">
+            ↓
+        </div>
+    </section>
+
+    <section id="career">
+        <h1>Flipkart Mode: ON</h1>
+        <div class="glass-card">
+            <h2 style="margin-bottom: 1rem;">Day 2 & Counting 🚀</h2>
+            <p style="opacity: 1; transform: none; font-size: 1rem;">
+                I know things are hectic and the pressure is real. 
+                But you were literally built for this.
+                <br><br>
+                <span class="highlight">You were built for this.</span>
+                <br>
+                Smash it, learn everything, and own that place.
+            </p>
+        </div>
+    </section>
+
+    <section id="distance">
+        <h1>About "The Distance"</h1>
+        <p>You might think distance changes things. But here is the reality:</p>
+        
+        <div class="promise-container">
+            <div class="promise-box" onclick="toggleCard(this)">
+                <h3>📍 The Logic</h3>
+                <p class="tap-hint">(Tap to read)</p>
+                <div class="hidden-text">
+                    Distance is just geography. It doesn't change who I am, or how much I'm rooting for you.
+                </div>
+            </div>
+
+            <div class="promise-box" onclick="toggleCard(this)">
+                <h3>🔥 My Effort</h3>
+                <p class="tap-hint">(Tap to read)</p>
+                <div class="hidden-text">
+                  I will not stop. Whether I'm next to you or 2,403 km away, I will be the one cheering loudest for your wins.
+                </div>
+            </div>
+
+            <div class="promise-box" onclick="toggleCard(this)">
+                <h3>🛡️ My Role</h3>
+                <p class="tap-hint">(Tap to read)</p>
+                <div class="hidden-text">
+                      I'm your recharge station. When the world gets loud, I'm here to listen. No demands, just support.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="final">
+        <h1>I'm Always Here</h1>
+        <p>No pressure. Just your biggest fan cheering you on.</p>
+        <button class="btn-love" onclick="celebrate()">Always & Forever💙</button>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Star Background Generation
+        const starContainer = document.getElementById('starContainer');
+        for(let i=0; i<100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+            star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+            starContainer.appendChild(star);
+        }
+
+        // Card Toggle Interaction
+        function toggleCard(element) {
+            // Close others
+            document.querySelectorAll('.promise-box').forEach(box => {
+                if(box !== element) box.classList.remove('active');
+            });
+            element.classList.toggle('active');
+        }
+
+        // Scroll Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+
+        // Confetti Celebration
+        function celebrate() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            // Change button text
+            const btn = document.querySelector('.btn-love');
+            btn.innerHTML = "Always & Forever💙";
+            btn.style.background = "#fff";
+            btn.style.color = "#0ea5e9";
+        }
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+    </script>
+</body>
+</html>
